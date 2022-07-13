@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'blogs',
     'users',
     'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
 
 ]
 
@@ -65,8 +66,9 @@ REST_FRAMEWORK= {
 
 SIMPLE_JWT ={
     'ACCESS_TOKEN_LIFETIME':timedelta(minutes=5),
-    'REFRESH_TOKEN_LIFETIME':timedelta(minutes=5),
-    'ROTATE_REFRESH_TOKEN':False,
+    'REFRESH_TOKEN_LIFETIME':timedelta(days=5),
+    'ROTATE_REFRESH_TOKEN':True,
+    'BLACKLIST_AFTER_ROTATION': True,
     'AUTH_HEADER_TYPES':('Bearer',),
     'AUTH_TOKEN_CLASSES':('rest_framework_simplejwt.tokens.AccessToken')
 
