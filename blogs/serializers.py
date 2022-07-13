@@ -2,7 +2,15 @@ from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
 from .models import *
 
+
+class ReplySerializer(ModelSerializer):
+    class Meta:
+        model = Reply
+        fields = '__all__' 
+
 class CommentSerializer(ModelSerializer):
+    replies = ReplySerializer(many=True)
+
     class Meta:
         model = Comment
         fields = '__all__'        

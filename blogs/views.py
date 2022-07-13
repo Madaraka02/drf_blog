@@ -29,6 +29,27 @@ class PostDestroyView(DestroyAPIView):
 
 
 
+class ReplyListView(ListAPIView):
+    queryset = Reply.objects.all().order_by('-id')
+    serializer_class = ReplySerializer
+
+class ReplyCreateView(CreateAPIView):
+    queryset = Reply.objects.all()
+    serializer_class = ReplySerializer
+
+class ReplyRetreiveAPIView(RetrieveAPIView):
+    queryset = Reply.objects.all()
+    serializer_class = ReplySerializer  
+
+class ReplyUpdateView(RetrieveUpdateAPIView):
+    queryset = Reply.objects.all()
+    serializer_class = ReplySerializer       
+
+class ReplyDestroyView(DestroyAPIView):
+    queryset = Reply.objects.all()
+    serializer_class = ReplySerializer
+    
+
 class CommentListView(ListAPIView):
     queryset = Comment.objects.all().order_by('-id')
     serializer_class = CommentSerializer
@@ -38,12 +59,10 @@ class CommentCreateView(CreateAPIView):
     serializer_class = CommentSerializer
 
 class CommentRetreiveAPIView(RetrieveAPIView):
-    lookup_field = "slug"
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer  
 
 class CommentUpdateView(RetrieveUpdateAPIView):
-    lookup_field = "slug"
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer       
 
