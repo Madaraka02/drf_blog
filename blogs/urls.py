@@ -16,4 +16,10 @@ urlpatterns = [
     path('comments/update/<int:id>/', CommentUpdateView.as_view()),
     path('comments/delete/<int:id>/', CommentDestroyView.as_view()),
 
+    path('replies/', ReplyListView.as_view()),
+    path('replies/create/', ReplyCreateView.as_view()),
+    path('replies/<int:id>/', ReplyRetreiveAPIView.as_view()),
+    path('replies/update/<int:id>/', ReplyUpdateView.as_view()),
+    path('replies/delete/<int:id>/', ReplyDestroyView.as_view()),
+
 ]
