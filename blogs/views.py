@@ -10,7 +10,7 @@ class PostListView(ListAPIView):
 
 class PostCreateView(CreateAPIView):
     queryset = Post.objects.all()
-    serializer_class = PostSerializer
+    serializer_class = PostCreateSerializer
 
 class PostRetreiveAPIView(RetrieveAPIView):
     lookup_field = "slug"
@@ -20,7 +20,7 @@ class PostRetreiveAPIView(RetrieveAPIView):
 class PostUpdateView(RetrieveUpdateAPIView):
     lookup_field = "slug"
     queryset = Post.objects.all()
-    serializer_class = PostSerializer       
+    serializer_class = PostCreateSerializer       
 
 class PostDestroyView(DestroyAPIView):
     queryset = Post.objects.all()
@@ -64,7 +64,8 @@ class CommentRetreiveAPIView(RetrieveAPIView):
 
 class CommentUpdateView(RetrieveUpdateAPIView):
     queryset = Comment.objects.all()
-    serializer_class = CommentSerializer       
+    serializer_class = CommentSerializer   
+    lookup_field = 'id'  
 
 class CommentDestroyView(DestroyAPIView):
     queryset = Comment.objects.all()

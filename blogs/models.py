@@ -7,7 +7,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=400, null=True)
     slug = AutoSlugField(populate_from='title')
-    image = models.FileField(upload_to='blogs')
+    image = models.FileField(upload_to='blogs', null=True, blank=True)
     description = models.TextField(null=True)
     snippet = models.CharField(max_length=400, null=True)
     likes = models.ManyToManyField(User, blank=True, related_name='likes')
@@ -22,7 +22,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     author = models.ForeignKey(User,  on_delete=models.CASCADE, null=True)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments', null=True)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments', null=True, blank=True)
     text = models.TextField(null=True)
     likes = models.ManyToManyField(User, blank=True,  related_name='clikes')
     dislikes = models.ManyToManyField(User, blank=True,  related_name='cdislikes')

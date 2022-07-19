@@ -9,7 +9,7 @@ class ReplySerializer(ModelSerializer):
         fields = '__all__' 
 
 class CommentSerializer(ModelSerializer):
-    replies = ReplySerializer(many=True)
+    replies = ReplySerializer(many=True, required=False)
 
     class Meta:
         model = Comment
@@ -23,4 +23,10 @@ class PostSerializer(ModelSerializer):
     # serializers.HyperlinkedRelatedField(many=True,read_only=True)
     class Meta:
         model = Post
-        fields = ['id','title','slug','image','description','comments','snippet','created_at', 'updated_at']
+        fields = ['id','author','title','slug','image','description','comments','snippet','likes','dislikes','created_at', 'updated_at']
+
+
+class PostCreateSerializer(ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ['id','title','slug','image','description','snippet','created_at', 'updated_at']
